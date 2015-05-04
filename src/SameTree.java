@@ -3,11 +3,24 @@
  */
 public class SameTree {
     public boolean isSameTree(TreeNode p, TreeNode q) {
-        if ((p == null && q != null) || (p != null && q == null) || p.val != q.val)
+        // 空树相等
+        if (p == null && q == null)
+            return true;
+
+        // 只有一个子树为空树或者节点的值不相等时，则两颗树不相等
+        if ((p == null && q != null) || (p != null && q == null) || (p.val != q.val))
             return false;
-        if (p != null && q != null && p.val == q.val) {
-            return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
-        }
-        return true;
+
+        // 判断子树是否相等
+        return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+
+    }
+
+    public static void main(String[] args) {
+        TreeNode t1 = new TreeNode(1);
+        t1.left = new TreeNode(2);
+        TreeNode t2 = new TreeNode(1);
+        t2.left = new TreeNode(2);
+        System.out.println(new SameTree().isSameTree(t1, t2));
     }
 }
