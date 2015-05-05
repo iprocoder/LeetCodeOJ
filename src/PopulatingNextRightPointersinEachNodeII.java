@@ -15,6 +15,8 @@ public class PopulatingNextRightPointersinEachNodeII {
         if (root.right != null) {
             root.right.next = nextChild(root.next);
         }
+
+        // 需要先处理右子树，否则会丢失右子树中的某些节点
         connect(root.right);
         connect(root.left);
     }
