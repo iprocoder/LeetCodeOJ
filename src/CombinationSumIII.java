@@ -17,10 +17,9 @@ public class CombinationSumIII {
             res.add(new ArrayList<>(cur));
             return;
         }
-//        if (sum > n)
-//            return;
-//        if (i > 9)
-//            return;
+        if (sum > n || cur.size() > k)
+            return;
+
 
         for (int j = i + 1; j <= 9; j++) {
             cur.add(j);
